@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 export const connectMongo = (): void => {
-  mongoose.connect(`${process.env.MONGODB_URI}`, {})
+  mongoose.connect(`${process.env.MONGODB_URI}`, { dbName: process.env.DB_NAME})
 
   mongoose.connection
     .once('open', () =>
