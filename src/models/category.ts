@@ -1,4 +1,4 @@
-import { Schema, Document, Types, model } from 'mongoose';
+import { Schema, Document, model } from 'mongoose';
 
 // Categoty Interface
 export interface ICategorySchema extends Document {
