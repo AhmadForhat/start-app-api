@@ -5,7 +5,8 @@ const questionsRoutes = express.Router()
 
 questionsRoutes.post('/save', async (req, res) => {
   const { body } = req
-  console.log(body)
+  // console.log(body)
+  console.log('response: ', res)
   await saveQuestions(body)
   res.json('two rest')
 })
