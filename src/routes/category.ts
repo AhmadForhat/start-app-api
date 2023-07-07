@@ -6,7 +6,7 @@ const categoriesRoutes = express.Router()
 categoriesRoutes.post('/save', async (req, res) => {
   const { body } = req
   await saveCategories(body)
-  res.json('two rest')
+  res.json('Category Saved')
 })
 
 export { categoriesRoutes }

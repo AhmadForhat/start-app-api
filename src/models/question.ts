@@ -11,6 +11,7 @@ export interface IQuestionSchema extends Document {
   categoryId: string;
   levelId: string;
   title: string;
+  code: string;
   options: IOptionSchema[];
   correctAnswer: string;
 }
@@ -32,6 +33,7 @@ const QuestionSchema: Schema<IQuestionSchema> = new Schema<IQuestionSchema>({
     required: true
   },
   title: { type: String, required: true },
+  code: { type: String, required: false },
   options: [OptionSchema],
   correctAnswer: { type: String, required: true },
 });

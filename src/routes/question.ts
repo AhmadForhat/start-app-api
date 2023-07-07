@@ -6,7 +6,7 @@ const questionsRoutes = express.Router()
 questionsRoutes.post('/save', async (req, res) => {
   const { body } = req
   await saveQuestions(body)
-  res.status(200).json('Saved')
+  res.status(200).json('Question Saved')
 })
 
 questionsRoutes.get('/', async (req, res) => {
@@ -17,6 +17,7 @@ questionsRoutes.get('/', async (req, res) => {
       {
         id: question._id,
         title: question.title,
+        code: question.code,
         options: question.options
       }
     ))

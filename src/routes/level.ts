@@ -6,7 +6,7 @@ const levelsRoutes = express.Router()
 levelsRoutes.post('/save', async (req, res) => {
   const { body } = req
   await saveLevels(body)
-  res.json('two rest')
+  res.json('Level Saved')
 })
 
 export { levelsRoutes }
