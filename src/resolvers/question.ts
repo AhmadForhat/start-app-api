@@ -5,18 +5,18 @@ export const saveQuestions = async (questions: IQuestionSchema[]) => {
 }
 
 interface IGetQuestions {
-  categoryId: string,
+  subjectId: string,
   levelId: string
-  quantity: number
+  quantity?: number
 }
 
 export const getQuestions = async ({
-  quantity,
-  categoryId,
+  quantity=5,
+  subjectId,
   levelId
 }: IGetQuestions) => {
   return await Question.find({
-    categoryId,
+    subjectId,
     levelId,
   }).limit(quantity)
 }

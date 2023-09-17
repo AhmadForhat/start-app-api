@@ -6,13 +6,13 @@ const questionsRoutes = express.Router()
 questionsRoutes.post('/save', async (req, res) => {
   const { body } = req
   await saveQuestions(body)
-  res.status(200).json('Saved')
+  res.status(200).json(body)
 })
 
-questionsRoutes.get('/', async (req, res) => {
-  const { query: {quantity, levelId, categoryId} } = req
-  if(quantity && levelId && categoryId) {
-    const questions = await getQuestions({quantity, levelId, categoryId})
+questionsRoutes.get('/subjects/:subjectId/levels/:levelId', async (req, res) => {
+  const { query: { quantity }, params: { subjectId, levelId } } = req
+  if(levelId && subjectId) {
+    const questions = await getQuestions({ quantity, levelId, subjectId })
     const formattedQuestions = questions.map(question => (
       {
         id: question._id,
@@ -28,12 +28,12 @@ questionsRoutes.get('/', async (req, res) => {
   }
 })
 
-questionsRoutes.post('/:questionId/correct', async (req, res) => {
+questionsRoutes.post('/:questionId/verify', async (req, res) => {
   const {params: { questionId }, body: { selectedOptionId }} = req
 
   const question = await getQuestionById(questionId)
 
-  if(question.correctAnswer.toString() === selectedOptionId){
+  if(question.correctAnswer === selectedOptionId){
     res.status(200).json({
       correct: true,
       question
@@ -44,8 +44,6 @@ questionsRoutes.post('/:questionId/correct', async (req, res) => {
       question
     })
   }
-
-  res.json(question)
 })
 
 export { questionsRoutes }

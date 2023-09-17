@@ -1,14 +1,13 @@
-import { Schema, Document, Types, model } from 'mongoose';
+import { Schema, Document, model } from 'mongoose';
 
 // Option Interface
 export interface IOptionSchema extends Document {
-  optionId: string;
   content: string;
 }
 
 // Question Interface
 export interface IQuestionSchema extends Document {
-  categoryId: string;
+  subjectId: string;
   levelId: string;
   title: string;
   options: IOptionSchema[];
@@ -17,13 +16,12 @@ export interface IQuestionSchema extends Document {
 
 // Option Schema
 const OptionSchema: Schema<IOptionSchema> = new Schema<IOptionSchema>({
-  optionId: { type: String },
   content: { type: String, required: true },
-}, {_id: false});
+});
 
 // Question Schema
 const QuestionSchema: Schema<IQuestionSchema> = new Schema<IQuestionSchema>({
-  categoryId: {
+  subjectId: {
     type: String,
     required: true
   },
