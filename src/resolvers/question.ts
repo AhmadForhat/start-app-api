@@ -11,7 +11,7 @@ interface IGetQuestions {
 }
 
 export const getQuestions = async ({
-  quantity=5,
+  quantity=100,
   subjectId,
   levelId
 }: IGetQuestions) => {
